@@ -213,6 +213,8 @@ jobs:
   test-e2e:
     name: Run e2e tests
     runs-on: ubuntu-22.04
+    env:
+      LOG_LEVEL: debug
     needs: [changes, build]
     if: needs.changes.outputs.code == 'true' || needs.changes.outputs.deps == 'true' || needs.changes.outputs.ci == 'true'
 
@@ -248,6 +250,7 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      LOG_LEVEL: debug
     needs: [changes, build]
     if: needs.changes.outputs.code == 'true' || needs.changes.outputs.deps == 'true' || needs.changes.outputs.ci == 'true'
 
